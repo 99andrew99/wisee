@@ -1,102 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="#003580"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="WISEE"
+        android:id="@+id/wiseeText"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/header"
-        >
+        />
 
-        <TextView
-            android:id="@+id/wisee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="WISEE"
-            android:textColor="@color/white"
-            android:textSize="35dp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+    <ImageButton
+        android:id="@+id/arBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wiseeText"
+        android:src="@drawable/ar_button_img"
+        android:scaleType="fitCenter"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="100dp"/>
 
-            >
-        </TextView>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/mapButton"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:contentDescription="지도 이동"
-            android:text="지도"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_round"
-            app:layout_constraintTop_toBottomOf="@id/wisee"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/arButton"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/arButton"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:contentDescription="ar 이동"
-            android:text="AR"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:background="@drawable/button_round"
-            app:layout_constraintTop_toBottomOf="@id/wisee"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/heatmapButton"
-            app:layout_constraintStart_toEndOf="@id/mapButton" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/heatmapButton"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:contentDescription="히트맵 이동"
-            android:text="히트맵"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:background="@drawable/button_round"
-            app:layout_constraintTop_toBottomOf="@id/wisee"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/arButton" />
-
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainContents"
+    <TextView
+        android:id="@+id/arText"
+        android:text="AR 실행"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/header"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/arBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        android:layout_marginTop="20dp"/>
 
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/mapBtn"
+        app:layout_constraintTop_toBottomOf="@id/arText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/map_button_img"
+        android:scaleType="fitCenter"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="100dp"
+        />
 
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/mapText"
+        android:text="지도 실행"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mapBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
 
 
 
