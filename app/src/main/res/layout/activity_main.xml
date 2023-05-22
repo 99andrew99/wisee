@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -22,13 +23,14 @@
         android:id="@+id/arBtn"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_button"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ar_button_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wiseeText"
-        android:src="@drawable/ar_button_img"
-        android:scaleType="fitCenter"
-        android:background="@drawable/rounded_button"
-        android:layout_marginTop="100dp"/>
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/arText"
@@ -45,17 +47,17 @@
         android:layout_marginTop="20dp"/>
 
     <ImageButton
+        android:id="@+id/mapBtn"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:id="@+id/mapBtn"
-        app:layout_constraintTop_toBottomOf="@id/arText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/map_button_img"
-        android:scaleType="fitCenter"
-        android:background="@drawable/rounded_button"
         android:layout_marginTop="100dp"
-        />
+        android:background="@drawable/rounded_button"
+        android:scaleType="fitCenter"
+        android:src="@drawable/map_button_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/arText"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/mapText"
