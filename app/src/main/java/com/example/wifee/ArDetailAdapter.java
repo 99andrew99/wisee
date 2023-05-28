@@ -7,10 +7,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ArDetailAdapter extends RecyclerView.Adapter<ArDetailAdapter.ViewHolder> {
-    private List<ArDetailItem> arDetailItems;
+    private List<MyDetailResult> arDetailItems;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView ssidDetailText, signalDetailText, frequencyDetailText, macDetailText, timeDetailText;
@@ -25,7 +28,7 @@ public class ArDetailAdapter extends RecyclerView.Adapter<ArDetailAdapter.ViewHo
         }
     }
 
-    public ArDetailAdapter(List<ArDetailItem> arDetailItems) {
+    public ArDetailAdapter(List<MyDetailResult> arDetailItems) {
         this.arDetailItems = arDetailItems;
     }
 
@@ -39,12 +42,15 @@ public class ArDetailAdapter extends RecyclerView.Adapter<ArDetailAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ArDetailItem item = arDetailItems.get(position);
-        holder.ssidDetailText.setText(item.getSsid());
-        holder.signalDetailText.setText(item.getSignal());
-        holder.frequencyDetailText.setText(item.getFrequency());
-        holder.macDetailText.setText(item.getMac());
-        holder.timeDetailText.setText(item.getTime());
+        MyDetailResult item = arDetailItems.get(position);
+        holder.ssidDetailText.setText(item.getSSID());
+        holder.signalDetailText.setText(String.valueOf(item.getLevel()));
+        holder.frequencyDetailText.setText(String.valueOf(item.getFrequency()));
+        holder.macDetailText.setText(item.getBSSID());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        String currentTime = sdf.format(new Date(item.getTimestamp()));
+        holder.timeDetailText.setText(currentTime);
     }
 
     @Override
@@ -52,4 +58,3 @@ public class ArDetailAdapter extends RecyclerView.Adapter<ArDetailAdapter.ViewHo
         return arDetailItems.size();
     }
 }
-
