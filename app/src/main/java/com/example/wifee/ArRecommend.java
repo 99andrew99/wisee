@@ -158,7 +158,7 @@ public class ArRecommend extends AppCompatActivity {
     }
 
     private static List<MyWifiInfo> sortWiFiInfoByFrequency(List<MyWifiInfo> wifiInfoList) {
-        Collections.sort(wifiInfoList, Comparator.comparingDouble(MyWifiInfo::getFrequency));
+        Collections.sort(wifiInfoList, Comparator.comparingDouble(MyWifiInfo::getFrequency).reversed());
         return wifiInfoList;
     }
 
