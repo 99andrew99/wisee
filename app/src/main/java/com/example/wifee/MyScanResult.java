@@ -1,11 +1,11 @@
 package com.example.wifee;
 
-public class MyWifiInfo {
+public class MyScanResult {
     private String ssid;
     private int rssi;
     private double frequency;
 
-    public MyWifiInfo(String ssid, int rssi, double frequency) {
+    public MyScanResult(String ssid, int rssi, double frequency) {
         this.ssid = ssid;
         this.rssi = rssi;
         this.frequency = frequency;
