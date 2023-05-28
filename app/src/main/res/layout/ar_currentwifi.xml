@@ -38,13 +38,13 @@
                 android:textStyle="bold"
                 android:layout_column="0"
                 android:text="SSID : "
-                android:textAlignment="center"
+                android:gravity="right"
                 />
             <TextView
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/ssidText"
                 android:text="" />
@@ -58,12 +58,14 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="감도 : " />
             <TextView
                 android:textSize="20sp"
-                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/signalText"
                 android:text="" />
@@ -75,14 +77,14 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
-                android:text="속도 : " />
+                android:text="링크스피드 : " />
             <TextView
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/speedText"
                 android:text="" />
@@ -94,14 +96,14 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="주파수(채널) : " />
             <TextView
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/frequencyText"
                 android:text="" />
@@ -113,14 +115,33 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
-                android:text="맥주소 : " />
+                android:text="IP 주소 : " />
             <TextView
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
+                android:layout_column="1"
+                android:id="@+id/IPText"
+                android:text="" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:layout_column="0"
+                android:text="MAC 주소 : " />
+            <TextView
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/macText"
                 android:text="" />
@@ -132,14 +153,14 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="측정시간 : " />
             <TextView
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/timeText"
                 android:text="" />
