@@ -123,6 +123,9 @@ public class ArRecommend extends AppCompatActivity {
         List<MyWifiInfo> myWifiInfoList = new ArrayList<>();
         for (int i = 0; i < scanResults.size(); i++) {
             myWifiInfoList.add(new MyWifiInfo(scanResults.get(i).SSID,scanResults.get(i).level,scanResults.get(i).frequency));
+            if(myWifiInfoList.get(i).getSSID().isEmpty()){
+                myWifiInfoList.get(i).setSSID("익명의 와이파이");
+            }
         }
 
         switch (option){
@@ -138,10 +141,12 @@ public class ArRecommend extends AppCompatActivity {
         }
 
 
+        for (MyWifiInfo mywifi : myWifiInfoList){
+            Log.d("TEST", mywifi.getSSID());
+            Log.d("TEST", Integer.toString(mywifi.getRSSI()));
+            Log.d("TEST", Double.toString(mywifi.getFrequency()));
+        }
 
-        Log.d("TEST", myWifiInfoList.get(0).getSSID());
-        Log.d("TEST", Integer.toString(myWifiInfoList.get(0).getRSSI()));
-        Log.d("TEST", Double.toString(myWifiInfoList.get(0).getFrequency()));
 
 
         return myWifiInfoList.get(0);
@@ -153,7 +158,7 @@ public class ArRecommend extends AppCompatActivity {
     }
 
     private static List<MyWifiInfo> sortWiFiInfoByFrequency(List<MyWifiInfo> wifiInfoList) {
-        Collections.sort(wifiInfoList, Comparator.comparingDouble(MyWifiInfo::getFrequency));
+        Collections.sort(wifiInfoList, Comparator.comparingDouble(MyWifiInfo::getFrequency).reversed());
         return wifiInfoList;
     }
 

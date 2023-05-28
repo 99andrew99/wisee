@@ -14,6 +14,10 @@ public class MyWifiInfo {
     public String getSSID() {
         return ssid;
     }
+    public String setSSID(String ssid){
+        this.ssid = ssid;
+        return ssid;
+    }
 
     public int getRSSI() {
         return rssi;
