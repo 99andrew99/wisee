@@ -61,8 +61,8 @@ public class ArRecommend extends AppCompatActivity {
 
                 MyScanResult bestWifi = getBestWifi(0);
                 recNameTxt.setText(bestWifi.getSSID());
-                recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()));
-                recFreqTxt.setText(Double.toString(bestWifi.getFrequency()));
+                recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()) + " dBm");
+                recFreqTxt.setText(Double.toString(bestWifi.getFrequency()) + " MHz");
                 // 클릭된 버튼의 배경색과 글자색을 변경합니다.
 
                 arRecommendSignalBtn.setTextColor(Color.WHITE);
@@ -79,8 +79,8 @@ public class ArRecommend extends AppCompatActivity {
 
                 MyScanResult bestWifi = getBestWifi(1);
                 recNameTxt.setText(bestWifi.getSSID());
-                recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()));
-                recFreqTxt.setText(Double.toString(bestWifi.getFrequency()));
+                recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()) + " dBm");
+                recFreqTxt.setText(Double.toString(bestWifi.getFrequency()) + " MHz");
                 // 클릭된 버튼의 배경색과 글자색을 변경합니다.
                 arRecommendFrequencyBtn.setTextColor(Color.WHITE);
                 arRecommendFrequencyBtn.setSelected(true);

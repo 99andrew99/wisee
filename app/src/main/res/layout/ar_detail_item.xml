@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TableLayout
@@ -14,26 +14,24 @@
         android:background="@drawable/rounded_button"
         >
 
-        <TableRow android:layout_marginBottom="10dp">
+        <TableRow android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
             <TextView
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_column="0"
                 android:text="SSID : "
-                android:textAlignment="center"
+                android:gravity="right"
                 />
             <TextView
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/ssidDetailText"
                 android:text="" />
         </TableRow>
-
-
 
         <TableRow
             android:layout_marginBottom="10dp">
@@ -41,12 +39,13 @@
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="감도 : " />
             <TextView
                 android:textSize="12sp"
-                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/signalDetailText"
                 android:text="" />
@@ -59,14 +58,13 @@
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="주파수(채널) : " />
             <TextView
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/frequencyDetailText"
                 android:text="" />
@@ -78,33 +76,32 @@
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="BSSID : " />
             <TextView
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/macDetailText"
                 android:text="" />
         </TableRow>
 
 
-        <TableRow>
+        <TableRow
+            android:layout_marginBottom="10dp">
             <TextView
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="right"
                 android:layout_column="0"
                 android:text="측정시간 : " />
             <TextView
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
+                android:gravity="left"
                 android:layout_column="1"
                 android:id="@+id/timeDetailText"
                 android:text="" />
