@@ -3,6 +3,7 @@ package com.example.wifee;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+
 import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
@@ -21,12 +22,19 @@ import java.util.Comparator;
 import java.util.List;
 
 import kotlin.collections.ArrayDeque;
-
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class ArRecommend extends AppCompatActivity {
 
-    private Button recByRSSIBtn;
-    private Button recByFreqBtn;
+    // 버튼 객체를 선언합니다.
+    Button arRecommendSignalBtn;
+    Button arRecommendFrequencyBtn;
+
+
     private TextView recNameTxt;
     private TextView recRSSITxt;
     private TextView recFreqTxt;
@@ -35,28 +43,51 @@ public class ArRecommend extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ar_wifi_recommend);
 
-        recByRSSIBtn = (Button) findViewById(R.id.arRecommendSignalBtn);
-        recByFreqBtn = (Button) findViewById(R.id.arRecommendFrequencyBtn);
+
+
         recNameTxt = (TextView)  findViewById(R.id.arRecommendNameText);
         recRSSITxt = (TextView) findViewById(R.id.arRecommendSignalText);
         recFreqTxt = (TextView) findViewById(R.id.arRecommendFrequencyText);
-        recByRSSIBtn.setOnClickListener(new View.OnClickListener() {
+
+
+        // 레이아웃의 버튼 객체를 참조합니다.
+        arRecommendSignalBtn = findViewById(R.id.arRecommendSignalBtn);
+        arRecommendFrequencyBtn = findViewById(R.id.arRecommendFrequencyBtn);
+
+        // 각 버튼에 대해 클릭 리스너를 설정합니다.
+        arRecommendSignalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MyWifiInfo bestWifi = getBestWifi(0);
                 recNameTxt.setText(bestWifi.getSSID());
                 recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()));
                 recFreqTxt.setText(Double.toString(bestWifi.getFrequency()));
+                // 클릭된 버튼의 배경색과 글자색을 변경합니다.
+
+                arRecommendSignalBtn.setTextColor(Color.WHITE);
+                arRecommendSignalBtn.setSelected(true);
+                // 다른 버튼의 색상을 원래대로 복구합니다.
+                arRecommendFrequencyBtn.setSelected(false);
+                arRecommendFrequencyBtn.setTextColor(Color.BLACK);
             }
         });
 
-        recByFreqBtn.setOnClickListener(new View.OnClickListener() {
+        arRecommendFrequencyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MyWifiInfo bestWifi = getBestWifi(1);
                 recNameTxt.setText(bestWifi.getSSID());
                 recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()));
                 recFreqTxt.setText(Double.toString(bestWifi.getFrequency()));
+                // 클릭된 버튼의 배경색과 글자색을 변경합니다.
+                arRecommendFrequencyBtn.setTextColor(Color.WHITE);
+                arRecommendFrequencyBtn.setSelected(true);
+
+                // 다른 버튼의 색상을 원래대로 복구합니다.
+                arRecommendSignalBtn.setSelected(false);
+                arRecommendSignalBtn.setTextColor(Color.BLACK);
             }
         });
     }
@@ -98,9 +129,15 @@ public class ArRecommend extends AppCompatActivity {
         }
 
         switch (option){
-            case 0: sortWiFiInfoByRSSI(myWifiInfoList);
-            case 1: sortWiFiInfoByFrequency(myWifiInfoList);
-            default: sortWiFiInfoByRSSI(myWifiInfoList);
+            case 0:
+                sortWiFiInfoByRSSI(myWifiInfoList);
+                break;
+            case 1:
+                sortWiFiInfoByFrequency(myWifiInfoList);
+                break;
+            default:
+                sortWiFiInfoByRSSI(myWifiInfoList);
+                break;
         }
 
 
@@ -127,3 +164,11 @@ public class ArRecommend extends AppCompatActivity {
 
 
 }
+
+
+
+
+
+
+
+
