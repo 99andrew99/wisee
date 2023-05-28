@@ -44,8 +44,8 @@ public class ArDetailAdapter extends RecyclerView.Adapter<ArDetailAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyDetailResult item = arDetailItems.get(position);
         holder.ssidDetailText.setText(item.getSSID());
-        holder.signalDetailText.setText(String.valueOf(item.getLevel()));
-        holder.frequencyDetailText.setText(String.valueOf(item.getFrequency()));
+        holder.signalDetailText.setText(String.valueOf(item.getLevel()) + " dBm");
+        holder.frequencyDetailText.setText(String.valueOf(item.getFrequency()) + " MHz");
         holder.macDetailText.setText(item.getBSSID());
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
