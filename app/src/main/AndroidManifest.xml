@@ -38,6 +38,8 @@
 
         <activity android:name=".MapMain"/>
         <activity android:name=".ArRecommend"/>
+        <activity android:name=".ArDetail"/>
+        <activity android:name=".ArCurrentwifi"/>
 
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="9243e8bebb2f916802a813a4fb67e87" />
     </application>
