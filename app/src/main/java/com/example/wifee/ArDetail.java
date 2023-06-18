@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -25,6 +26,7 @@ public class ArDetail extends AppCompatActivity {
     private ArDetailAdapter adapter;
     private List<MyDetailResult> arDetailItems;
 
+
     Button arDetailRoadBtn;
 
     @Override
@@ -36,7 +38,6 @@ public class ArDetail extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.detailRecyclerView);
         arDetailRoadBtn = findViewById(R.id.arDetailRoadBtn);
-
         arDetailRoadBtn.setOnClickListener(new View.OnClickListener() {
 
 
@@ -91,6 +92,7 @@ public class ArDetail extends AppCompatActivity {
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(adapter);
+
             }
         });
 
