@@ -1,4 +1,4 @@
-package com.example.wifee;
+package com.example.wisee;
 
 public class MyScanResult {
     private String ssid;

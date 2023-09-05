@@ -1,4 +1,4 @@
-package com.example.wifee;
+package com.example.wisee;
 
 public class MyDetailResult {
     private String SSID;

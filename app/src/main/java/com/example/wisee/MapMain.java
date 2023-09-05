@@ -1,28 +1,14 @@
-package com.example.wifee;
+package com.example.wisee;
 
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.ViewGroup;
-import android.Manifest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.app.ActivityCompat;
 
-import net.daum.mf.map.api.CameraUpdateFactory;
 import net.daum.mf.map.api.MapPoint;
-import net.daum.mf.map.api.MapPointBounds;
-import net.daum.mf.map.api.MapPolyline;
 import net.daum.mf.map.api.MapView;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MapMain extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener {
 

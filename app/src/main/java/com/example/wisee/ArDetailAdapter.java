@@ -1,4 +1,4 @@
-package com.example.wifee;
+package com.example.wisee;
 
 import android.view.LayoutInflater;
 import android.view.View;
