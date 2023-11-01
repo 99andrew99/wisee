@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }
         // If all permissions are already granted, start the animations
         startAnimations();
+
     }
 
     @Override
