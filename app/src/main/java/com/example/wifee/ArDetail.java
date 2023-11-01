@@ -36,8 +36,16 @@ public class ArDetail extends AppCompatActivity {
         arDetailRoadBtn = findViewById(R.id.arDetailRoadBtn);
         arDetailRoadBtn.setOnClickListener(new View.OnClickListener() {
 
+
             @Override
             public void onClick(View view) {
+                CreateDetailItems();
+            }
+        });
+
+
+    }
+
 
                 if (ActivityCompat.checkSelfPermission(ArDetail.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     String[] permission_list = {
@@ -52,8 +60,10 @@ public class ArDetail extends AppCompatActivity {
                     }
                 }
 
-                WifiManager wifiManager = getWifiManager();
-                List<ScanResult> scanResults = wifiManager.getScanResults();
+
+        WifiManager wifiManager = getWifiManager();
+        List<ScanResult> scanResults = wifiManager.getScanResults();
+
 
                 arDetailItems = new ArrayList<>();
                 for (int i = 0; i < scanResults.size(); i++) {
@@ -71,6 +81,7 @@ public class ArDetail extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
             }
         });
+
     }
 
     private WifiManager getWifiManager() {

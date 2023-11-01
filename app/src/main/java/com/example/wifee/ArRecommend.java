@@ -54,6 +54,7 @@ public class ArRecommend extends AppCompatActivity {
                     recommendChoiceText.setText("주파수");
                     isFrequency = true;
                 }
+
             }
         });
     }
