@@ -12,11 +12,15 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+
+    <!-- Limits app visibility in the Google Play Store to ARCore supported devices
+         (https://developers.google.com/ar/devices).ar코어 -->
+    <uses-feature android:name="android.hardware.camera.ar" />
 
     <application
         android:usesCleartextTraffic="true"
@@ -31,7 +35,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,6 +50,36 @@
         <activity android:name=".ArRecommend"/>
         <activity android:name=".ArDetail"/>
         <activity android:name=".ArCurrentwifi"/>
+
+        <activity android:name="com.unity3d.player.UnityPlayerActivity"
+            android:theme="@style/UnityThemeSelector"
+            android:screenOrientation="fullUser"
+            android:launchMode="singleTask"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:resizeableActivity="false"
+            android:hardwareAccelerated="false"
+            android:process=":UnityKillsMe">
+
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+            <meta-data android:name="android.notch_support" android:value="true" />
+        </activity>
+
+<!--        2023.9.12 오후 7시 39분 시작 -->
+
+        <activity
+            android:label="@string/app_name"
+            android:name="com.example.wifee.MainUnityActivity"
+            android:screenOrientation="fullSensor"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+            android:hardwareAccelerated="false"
+            android:process=":Unity">
+        </activity>
+<!--        끝-->
+
+
+        <!-- "AR Required" app, requires "Google Play Services for AR" (ARCore)
+         to be installed, as the app does not include any non-AR features. -->
+        <meta-data android:name="com.google.ar.core" android:value="required"/>
 
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="9243e8bebb2f916802a813a4fb67e87" />
     </application>

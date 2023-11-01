@@ -3,7 +3,6 @@ package com.example.wifee;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-
 import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
@@ -11,94 +10,67 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import kotlin.collections.ArrayDeque;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
 public class ArRecommend extends AppCompatActivity {
-
-    // 버튼 객체를 선언합니다.
-    Button arRecommendSignalBtn;
-    Button arRecommendFrequencyBtn;
-
 
     private TextView recNameTxt;
     private TextView recRSSITxt;
     private TextView recFreqTxt;
+    private TextView recommendChoiceText;
+    private TextView recommendChoiceBtn;
+
+    // 클릭 상태를 추적하기 위한 변수
+    private boolean isFrequency = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ar_wifi_recommend);
 
+        recNameTxt = findViewById(R.id.arRecommendNameText);
+        recRSSITxt = findViewById(R.id.arRecommendSignalText);
+        recFreqTxt = findViewById(R.id.arRecommendFrequencyText);
+        recommendChoiceText = findViewById(R.id.recommendChoiceText);
+        recommendChoiceBtn = findViewById(R.id.recommendChoiceBtn);
 
+        // 기본 상태 설정
+        updateView(0);
 
-        recNameTxt = (TextView)  findViewById(R.id.arRecommendNameText);
-        recRSSITxt = (TextView) findViewById(R.id.arRecommendSignalText);
-        recFreqTxt = (TextView) findViewById(R.id.arRecommendFrequencyText);
-
-
-        // 레이아웃의 버튼 객체를 참조합니다.
-        arRecommendSignalBtn = findViewById(R.id.arRecommendSignalBtn);
-        arRecommendFrequencyBtn = findViewById(R.id.arRecommendFrequencyBtn);
-
-        // 각 버튼에 대해 클릭 리스너를 설정합니다.
-        arRecommendSignalBtn.setOnClickListener(new View.OnClickListener() {
+        recommendChoiceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isFrequency) {
+                    updateView(0);
+                    recommendChoiceText.setText("감도");
+                    isFrequency = false;
+                } else {
+                    updateView(1);
+                    recommendChoiceText.setText("주파수");
+                    isFrequency = true;
+                }
 
-                MyScanResult bestWifi = getBestWifi(0);
-                recNameTxt.setText(bestWifi.getSSID());
-                recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()) + " dBm");
-                recFreqTxt.setText(Double.toString(bestWifi.getFrequency()) + " MHz");
-                // 클릭된 버튼의 배경색과 글자색을 변경합니다.
-
-                arRecommendSignalBtn.setTextColor(Color.WHITE);
-                arRecommendSignalBtn.setSelected(true);
-                // 다른 버튼의 색상을 원래대로 복구합니다.
-                arRecommendFrequencyBtn.setSelected(false);
-                arRecommendFrequencyBtn.setTextColor(Color.BLACK);
-            }
-        });
-
-        arRecommendFrequencyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MyScanResult bestWifi = getBestWifi(1);
-                recNameTxt.setText(bestWifi.getSSID());
-                recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()) + " dBm");
-                recFreqTxt.setText(Double.toString(bestWifi.getFrequency()) + " MHz");
-                // 클릭된 버튼의 배경색과 글자색을 변경합니다.
-                arRecommendFrequencyBtn.setTextColor(Color.WHITE);
-                arRecommendFrequencyBtn.setSelected(true);
-
-                // 다른 버튼의 색상을 원래대로 복구합니다.
-                arRecommendSignalBtn.setSelected(false);
-                arRecommendSignalBtn.setTextColor(Color.BLACK);
             }
         });
     }
-
-
 
     private WifiManager getWifiManager() {
         return (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
     }
 
-    // get existing wifi list
+    // 기존에 있는 메서드를 활용하여 상태에 따라 뷰를 업데이트하는 메서드
+    private void updateView(int option) {
+        MyScanResult bestWifi = getBestWifi(option);
+        recNameTxt.setText(bestWifi.getSSID());
+        recRSSITxt.setText(Integer.toString(bestWifi.getRSSI()));
+        recFreqTxt.setText(Double.toString(bestWifi.getFrequency()));
+    }
+
     public MyScanResult getBestWifi(int option) {
         String[] result = new String[0];
 
@@ -106,6 +78,7 @@ public class ArRecommend extends AppCompatActivity {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             String[] permission_list = {
+                    android.Manifest.permission.ACCESS_FINE_LOCATION,
                     android.Manifest.permission.ACCESS_WIFI_STATE,
                     android.Manifest.permission.CHANGE_WIFI_STATE
             };
@@ -113,7 +86,7 @@ public class ArRecommend extends AppCompatActivity {
                 //권한 허용 여부를 확인한다.
                 int reqPer = checkCallingOrSelfPermission(permission);
                 if(reqPer == PackageManager.PERMISSION_DENIED){
-                    //권한 허용을여부를 확인하는 창을 띄운다
+                    //권한 허용 여부를 확인하는 창을 띄운다
                     requestPermissions(permission_list,777);
                 }
             }
@@ -122,7 +95,7 @@ public class ArRecommend extends AppCompatActivity {
         List<ScanResult> scanResults = wifiManager.getScanResults();
         List<MyScanResult> myWifiInfoList = new ArrayList<>();
         for (int i = 0; i < scanResults.size(); i++) {
-            myWifiInfoList.add(new MyScanResult(scanResults.get(i).SSID,scanResults.get(i).level,scanResults.get(i).frequency));
+            myWifiInfoList.add(new MyScanResult(scanResults.get(i).SSID, scanResults.get(i).level, scanResults.get(i).frequency));
             if(myWifiInfoList.get(i).getSSID().isEmpty()){
                 myWifiInfoList.get(i).setSSID("익명의 와이파이");
             }
@@ -140,17 +113,16 @@ public class ArRecommend extends AppCompatActivity {
                 break;
         }
 
-
         for (MyScanResult mywifi : myWifiInfoList){
             Log.d("TEST", mywifi.getSSID());
             Log.d("TEST", Integer.toString(mywifi.getRSSI()));
             Log.d("TEST", Double.toString(mywifi.getFrequency()));
         }
 
-
-
         return myWifiInfoList.get(0);
     }
+
+
 
     private static List<MyScanResult> sortWiFiInfoByRSSI(List<MyScanResult> wifiInfoList) {
         Collections.sort(wifiInfoList, Comparator.comparingInt(MyScanResult::getRSSI).reversed());
@@ -161,14 +133,4 @@ public class ArRecommend extends AppCompatActivity {
         Collections.sort(wifiInfoList, Comparator.comparingDouble(MyScanResult::getFrequency).reversed());
         return wifiInfoList;
     }
-
-
 }
-
-
-
-
-
-
-
-

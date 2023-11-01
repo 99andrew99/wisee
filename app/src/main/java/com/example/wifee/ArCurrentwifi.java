@@ -38,9 +38,13 @@ public class ArCurrentwifi extends AppCompatActivity {
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         String ssid = wifiInfo.getSSID();
         ssidText.setText(ssid.substring(1,ssid.length()-1));
-        signalText.setText(Integer.toString(wifiInfo.getRssi()) + " dBm");
-        speedText.setText(Integer.toString(wifiInfo.getLinkSpeed()) + " Mbps");
-        frequencyText.setText(Integer.toString(wifiInfo.getFrequency()) + " MHz");
+
+
+
+        signalText.setText(Integer.toString(wifiInfo.getRssi()) + "dBm");
+        speedText.setText(Integer.toString(wifiInfo.getLinkSpeed()) + "Mbps");
+        frequencyText.setText(Integer.toString(wifiInfo.getFrequency()) + "MHz");
+
         int ipAddress = wifiInfo.getIpAddress();
         String stringIpAddress = String.format(
                 "%d.%d.%d.%d",

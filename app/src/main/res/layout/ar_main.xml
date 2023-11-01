@@ -1,105 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/arTextContaier"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="187dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/wisee_logo_white"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/ar_text_container"
-        android:layout_marginTop="20dp">
-        <TextView
-            android:id="@+id/arDefaultWifiText"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/wisee_logo_img"
+        app:layout_constraintEnd_toEndOf="@+id/current_wifi_circle"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/current_wifi_circle"
+        app:layout_constraintTop_toTopOf="@+id/current_wifi_circle" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        android:text="현재 연결된 WIFI"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/current_wifi_circle"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/current_wifi_circle"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+    <ImageView
+        android:id="@+id/current_wifi_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/main_circle"
+        android:elevation="-1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_logo" />
+
+    <TextView
+        android:id="@+id/arChangeWifiText"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:text="탐색중..."
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/current_wifi_circle"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/current_wifi_circle"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/main_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_wifi_circle"
+        >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/main_bar"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="현재 연결된 와이파이"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            />
-        <TextView
-            android:id="@+id/arChangeWifiText"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/arDefaultWifiText"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/wifi_info"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/main_white_rectangle"
+            android:elevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="CNU WIFI"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
+            app:layout_constraintHorizontal_bias="0.29"
+            app:layout_constraintStart_toEndOf="@+id/ar_start"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-            />
+            <ImageView
+                android:id="@+id/wifi_info_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/wisee_logo_img_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="현재 WIFI 정보"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wifi_info_img"
+                app:layout_constraintVertical_bias="0.384" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ar_detail"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/main_white_rectangle"
+            android:elevation="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.29"
+            app:layout_constraintStart_toEndOf="@+id/wifi_recommend"
+            app:layout_constraintTop_toBottomOf="@+id/wifi_info"
+            app:layout_constraintVertical_bias="0.206">
+
+            <ImageView
+                android:id="@+id/ar_detail_img"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/main_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="WIFI 자세한 정보"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ar_detail_img" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/wifi_recommend"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/main_white_rectangle"
+            android:elevation="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ar_start"
+            app:layout_constraintVertical_bias="0.02">
+
+            <ImageView
+                android:id="@+id/wifi_recommend_img"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/main_recommend"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="WIFI 추천"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wifi_recommend_img" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ar_start"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/main_white_rectangle"
+            android:elevation="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+            <ImageView
+                android:id="@+id/ar_start_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/ar_button_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="AR 실행"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ar_start_img"
+                app:layout_constraintVertical_bias="0.384" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <android.widget.Button
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:id="@+id/arCurrentWifiBtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/arWifiRecommendBtn"
-        android:background="@drawable/rounded_button"
-        android:text="현재 와이파이 정보 / 저장"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        />
 
-    <android.widget.Button
-        android:id="@+id/arWifiRecommendBtn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/arCurrentWifiBtn"
-        app:layout_constraintEnd_toStartOf="@id/arWifiDetailBtn"
-        android:background="@drawable/rounded_button"
-        android:text="와이파이 추천"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        />
 
-    <android.widget.Button
-        android:id="@+id/arWifiDetailBtn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/arWifiRecommendBtn"
-        app:layout_constraintEnd_toStartOf="@id/arHeatMapBtn"
-        android:background="@drawable/rounded_button"
-        android:text="와이파이 디테일 정보"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        />
-
-    <android.widget.Button
-        android:id="@+id/arHeatMapBtn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/arWifiDetailBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_button"
-        android:text="Heat Map"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

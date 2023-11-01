@@ -3,76 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:text="WISEE"
-        android:id="@+id/wiseeText"
-        android:textSize="35dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/wiseeLogoText"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        android:src="@drawable/wisee_text_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/wiseeLogoWifi"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wisee_logo_img"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <ImageButton
-        android:id="@+id/arBtn"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/rounded_button"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ar_button_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wiseeText"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/arText"
-        android:text="AR 실행"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/arBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
-
-    <ImageButton
-        android:id="@+id/mapBtn"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/rounded_button"
-        android:scaleType="fitCenter"
-        android:src="@drawable/map_button_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/arText"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/mapText"
-        android:text="지도 실행"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mapBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
-
-
-
+        app:layout_constraintVertical_bias="0.463" />
 </androidx.constraintlayout.widget.ConstraintLayout>

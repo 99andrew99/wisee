@@ -1,62 +1,93 @@
 package com.example.wifee;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
-import android.widget.ImageButton;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton arBtn;
-    private ImageButton mapBtn;
-
-
-
+    private ImageView wiseeLogoText;
+    private ImageView wiseeLogoWifi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        wiseeLogoText = findViewById(R.id.wiseeLogoText);
+        wiseeLogoWifi = findViewById(R.id.wiseeLogoWifi);
+
         onCheckPermission();
+    }
 
-        arBtn = (ImageButton) findViewById(R.id.arBtn);
-        arBtn.setOnClickListener(new View.OnClickListener() {
+    private void startAnimations() {
+        AlphaAnimation alphaAnimationText = new AlphaAnimation(0.0f, 1.0f);
+        alphaAnimationText.setDuration(2000);
+        alphaAnimationText.setFillAfter(true);
+
+        TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, wiseeLogoWifi.getHeight(), 0);
+        translateAnimation.setDuration(1000);
+        translateAnimation.setFillAfter(true);
+
+        AlphaAnimation alphaAnimationWifi = new AlphaAnimation(0.0f, 1.0f);
+        alphaAnimationWifi.setDuration(2000);
+        alphaAnimationWifi.setFillAfter(true);
+
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(translateAnimation);
+        animationSet.addAnimation(alphaAnimationWifi);
+
+        wiseeLogoText.startAnimation(alphaAnimationText);
+
+        alphaAnimationText.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onClick(View v) {
-                openARMainActivity();
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                wiseeLogoWifi.setVisibility(View.VISIBLE);
+                wiseeLogoWifi.startAnimation(animationSet);
             }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
         });
 
-        mapBtn = (ImageButton) findViewById(R.id.mapBtn);
-        mapBtn.setOnClickListener(new View.OnClickListener() {
+        animationSet.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onClick(View v) {
-                openMAPMainActivity();
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        openARMainActivity();
+                    }
+                }, 1000);
             }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
         });
-
-
     }
 
     public void openARMainActivity() {
         Intent intent = new Intent(this, ArMain.class);
         startActivity(intent);
-    }
-
-    public void openMAPMainActivity() {
-        Intent intent = new Intent(this, MapMain.class);
-        startActivity(intent);
+        finish();
     }
 
     private void onCheckPermission() {
@@ -70,15 +101,30 @@ public class MainActivity extends AppCompatActivity {
                 android.Manifest.permission.ACCESS_WIFI_STATE,
                 Manifest.permission.CHANGE_WIFI_STATE
         };
-        for(String permission : permission_list){
-            //권한 허용 여부를 확인한다.
+        for (String permission : permission_list) {
             int reqPer = checkCallingOrSelfPermission(permission);
-            if(reqPer == PackageManager.PERMISSION_DENIED){
-                //권한 허용을여부를 확인하는 창을 띄운다
-                requestPermissions(permission_list,777);
+            if (reqPer == PackageManager.PERMISSION_DENIED) {
+                requestPermissions(permission_list, 777);
+                return; // Return here to wait for the user's response
             }
         }
+        // If all permissions are already granted, start the animations
+        startAnimations();
+
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 777) {
+            for (int grantResult : grantResults) {
+                if (grantResult == PackageManager.PERMISSION_DENIED) {
+                    // Show a message to the user that the permission is necessary, or handle the lack of permission appropriately
+                    return;
+                }
+            }
+            // All permissions are granted, start the animations
+            startAnimations();
+        }
+    }
 }
