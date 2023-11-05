@@ -24,11 +24,12 @@
 <h2>세부 내</h2>
 <p>
 기존 어플과의 차별성)
+  </p>
   ![image](https://github.com/99andrew99/wisee/assets/66951806/213abfdb-0cca-4c55-bda8-3bf2190e5cd9)
   ![image](https://github.com/99andrew99/wisee/assets/66951806/40367c51-af43-4e0a-bcf7-08b991962af3)
 
 
-</p>
+
 
 <h2></h2>
 <p>
